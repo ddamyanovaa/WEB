@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+	<head>
+		<title>jQuery</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="css\referat.css">
+	</head>
+	<body>
+		<div id="header">
+			<ul>
+				<li><a href="#beginning">Въведение</a></li>
+				<li><a href="#features">Характеристики</a></li>
+				<li><a href="#first-steps">Синтаксис</a></li>
+				<li><a href="#basic-methods">Методи</a></li>
+				<li><a href="#jquery-events">jQuery events</a></li>
+				<li><a href="#jquery-effects">jQuery effects</a></li>
+				<li><a href="#ajax">AJAX</a></li>
+				<li><a href="#ending">Заключение</a></li>
+				<li><a href="#sources">Източници</a></li>
+			</ul>
+		</div>
+		<div class="main">
+			<h1 id="heading">Библиотека jQuery</h1>
+			<h3 align="center">Изготвен от Димитрина Дамянова, 81399, Web технологии, 13ed</h3>
+			<div id="beginning">
+				<h2 class="sub-heading">Въведение</h2>
+				<img class="img1" src="img\jQuerybeg.jpg">
+				<p class="text">
+					jQuery е бърза, малка на размер, лесна за разбиране и богата на функции JavaScript библиотека. Тя е създадена от Джон Резиг през 2006г.
+					Мотото на jQuery е: <i>"Пиши по-малко, прави повече!"</i>. Това мото е изключително подходящо, тъй като функционалността на библиотеката се 
+					върти около опростяване на всеки ред код. jQuery работи във всички основни браузъри, включително в Internet Explorer 6! jQuery не изисква инсталация. Има два начина да се вгради библиотеката в html код. Първият начин 
+					се нарича локална <i> "инсталация" </i> - може да се свали директно като javaScript документ от официалния сайт на библиотеката и да се вгради като
+					обикновен скрипт. Вторият начин е чрез линк към CDN (Content Delivery Network), в head частта на html се поставя следният линк - <br> 
+					<i><b> &lt; script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js" &gt; &lt; /script &gt; </b></i>.
+				</p>
+			</div>
+			<div id="features">
+				<h2 class="sub-heading">Характеристики</h2>
+				<img class="img2" src="img\features.png">
+				<p class="text">
+					Това са някои от особеностите, които правят jQuery толкова ефективна:
+					<ul class="list-features">
+						<li>
+							jQuery прави изключително лесно манипулирането на DOM (Document Object Model). За да направят по-интерактивна страницата, уеб 
+							програмистите използват точно този метод;
+						</li>
+						<li>
+							Има детайлно описана документация, която е лесно достъпна за потребители;
+						</li>
+						<li>
+							jQuery разполага с над 1000 плъгина, които подобряват така наречения user experience. Един пример за такъв плъгин е AJAX 
+							(Asynchronous JavaScript And XML), чрез който се разработва богат на функционалности и responsive сайт;
+						</li>
+						<li>
+							Закачането на събития (event-и) от типа: onclick, onkeypress, onmousemove и т.н., става много по-лесно чрез jQuery, без да се претрупва излишно html кода;
+						</li>
+						<li>
+							Библиотеката предлага множество вградени анимационни ефекти, които могат да направят мобилното приложение или сайта още по-интерактивен.
+						</li>
+					</ul>
+				</p>
+			</div>
+			<div id="first-steps">
+				<h2 class="sub-heading">Синтаксис</h2>
+				<p class="text">
+					jQuery селектира HTML елементи и извършва с тях действия, които сме указали.
+					Знакът $ замества думата jQuery. Така $(селектор) и jQuery(селектор) означава едно и също нещо. По този начин избираме съответния HTML 
+					елемент, който искаме да достъпим. Селекторът приема стойности на id, class, HTML тагове и т.н. Задължително е те да бъдат оградени в кавички.
+					<br>
+					Пример:
+					<ul id="example-syntax">
+						<li>
+							<span class="red-elements">$("#id")</span> - достъпва първия намерен елемент с ид - id;
+						</li>
+						<li>
+							<span class="red-elements">$(".class")</span> - достъпва всички елементи с клас - class;
+						</li>
+						<li>
+							<span class="red-elements">$("HTML таг")</span> - достъпва всички елементи с HTML таг, където HTML таг &isin; [ul, li, p, div, ...].
+						</li>
+					</ul>
+					Повече информация за видове селектори можете да намерите на този <a href="https://www.w3schools.com/jquery/jquery_ref_selectors.asp">линк</a>.
+				</p>
+				<img class="img2" src="img\jquerysyntax.png" >
+				<p class="text">
+					Знакът <span class="red-elements"><b>.</b></span> служи като разделител.<br>
+					Непосредствено след разделителя указваме съответното действие. Както е показано на картинката отгоре, action() може да бъде заместено с html(), val(), css() и т.н., за които ще бъде споменато малко по-късно.
+					
+				</p>
+			</div>
+			<div id="basic-methods">
+				<h2 class="sub-heading">Основни методи</h2>
+				<p class="text">
+					Сега ще покажа някои основни jQuery методи за работа с HTML елементи.
+				</p>
+				<table class="example-table" border="1">
+					<tr>
+						<th>Метод</th>
+						<th>Пример</th>
+						<th>Сравнение с обикновен JavaScript</th>
+					</tr>
+					<tr>
+						<td>.html(content)</td>
+						<td>
+							<span class="red-elements">$("#foo").html()</span> - когато не даваме стойност на content, тогава това, което връща .html() e html съдържание на първия намерен елемент с ид foo, може да върне html тагове, които са вградени.<br>
+							<span class="red-elements">$("#foo").html(string)</span> - в този случай, html съдържанието на елемента с ид foo се замества със string, може да съдържа и html тагове.
+						</td>
+						<td>
+						document.getElementById("foo").innerHTML<br>
+						document.getElementById("foo").innerHTML="string"
+						</td>
+					</tr>
+					<tr>
+						<td>.text(content)</td>
+						<td>
+							<span class="red-elements">$("#foo").text()</span> - когато не даваме стойност на content, тогава това, което връща .text() e съдържанието на първия намерен елемент с ид foo, като тук не се връщат html тагове.<br>
+							<span class="red-elements">$("#foo").text(string)</span> - в този случай, съдържанието на елемента с ид foo се замества със string, НЕ може да съдържа html тагове.
+						</td>
+						<td>
+						document.getElementById("foo").textContent<br>
+						document.getElementById("foo").textContent="string"
+						</td>
+					</tr>
+					<tr>
+						<td>.append(content)</td>
+						<td>
+							<span class="red-elements">$("#foo").append(string)</span> - добавя в края на съдържанието на елемент с ид foo string, като това, което може да се добави са обиконовен текст, jquery обекти, html тагове. 
+						</td>
+						<td>
+							document.getElementById("foo").innerHTML += string<br>
+							var content = document.createTextNode(string);
+							document.getElementById("foo").appendChild(content);
+						</td>
+					<tr>
+					<tr>
+						<td>.prepend(content)</td>
+						<td>
+							<span class="red-elements">$("#foo").prepend(string)</span> - подобно на append, но добавя преди съдържанието на елемента. 
+						</td>
+						<td>
+							document.getElementById("foo").innerHTML = string + document.getElementById("foo").innerHTML
+						</td>
+					</tr>
+					<tr>
+						<td>.remove(content)</td>
+						<td>
+							<span class="red-elements">$("#foo").remove()</span> - премахва избрания елемент и неговите деца, това може да се укаже и по този начин<br>
+							<span class="red-elements">$("div").remove("#foo")</span>, където div е произволен таг.
+						</td>
+						<td>
+							var element = document.getElementById("foo");
+							element.parentNode.removeChild(element);
+						</td>
+					</tr>
+					<tr>
+						<td>.css(content)</td>
+						<td>
+							<span class="red-elements">$("#foo").css("property")</span> - връща стойността на property, на елемента с ид foo, на мястото на property може да стои произволно стилово свойство. <br>
+							<span class="red-elements">$("#foo").css("property", "new style")</span> - задава стойност new style на property, могат да се задават стойности на произволни стилови свойства.<br>
+							<span class="red-elements">$("#foo").css({<br>
+																		&nbsp;&nbsp;&nbsp;"property1" : "new style1",<br>
+																		&nbsp;&nbsp;&nbsp;"property2" : "new style2"<br>
+																	})</span> - по този начин се променят повече от едно стиловo свойствo наведнъж.
+						</td>
+						<td>
+							document.getElementById("foo").style.property = new style
+						</td>
+					</tr>
+				</table>
+				Това е само малка част от методите, които се използват за манипулация на html елементи.
+			</div>
+			<div id="jquery-events">
+				<h2 class="sub-heading">jQuery events</h2>
+				<img src="img\jquery-events.png" height="200px" width="300px;" style="margin:0 35%">
+				<p class="text">
+					Event или събитие в JavaScript e действие, което възниква когато кликнем на бутон, натиснем клавиш, преместим курсора на мишката и т.н.
+					Сега ще разгледам няколко основни event-a в jQuery.
+				</p>
+				<table border="1" class="example-table">
+					<tr>
+						<th>Event</th>
+						<th>Пример</th>
+					</tr>
+					<tr>
+						<td>
+							.on()
+						</td>
+						<td>
+							<span class="red-elements">$(".btn").on(event, function(){<br>
+																	&nbsp;&nbsp;&nbsp;content<br>
+																	})</span> - този метод слуша за едно или повече събития, възникнали върху елемента .btn, събитията може да бъдат click, keypress и т.н. Във функцията е указано какво дайствие да се извърши.
+						</td>
+					</tr>
+					<tr>
+						<th colspan="2">Mouse events</th>
+					</tr>
+					<tr>
+						<td>
+							.click()
+						</td>
+						<td>
+							<span class="red-elements">$("button").click(function(){<br>
+														&nbsp;&nbsp;&nbsp;content<br>
+													    })</span> - при кликане върху бутон.
+							
+						</td>
+					</tr>
+					<tr>
+						<td>
+							.mousedown()
+						</td>
+						<td>
+							<span class="red-elements">$("button").mousedown(function(){<br>
+														&nbsp;&nbsp;&nbsp;content<br>
+													    })</span> - при кликане на левия бутон на мишката върху съответния елемент.
+							
+						</td>
+					</tr>
+					<tr>
+						<td>
+							.mouseup()
+						</td>
+						<td>
+							<span class="red-elements">$("button").mouseup(function(){<br>
+														&nbsp;&nbsp;&nbsp;content<br>
+													    })</span> - при освобождаване на левия бутон от мишката, използва се често с mousedown.
+							
+						</td>
+					</tr>
+					<tr>
+						<th colspan="2">Keyboard events</th>
+					</tr>
+					<tr>
+						<td>
+							.keypress()
+						</td>
+						<td>
+							<span class="red-elements">$("input").keypress(function(){<br>
+														&nbsp;&nbsp;&nbsp;content<br>
+													    })</span> - при натискане на клавиш от клавиатурата, НЕ работи за клавиши като ALT, CTRL, SHIFT, ESC. 
+						</td>
+					</tr>
+					<tr>
+						<td>
+							.keydown()
+						</td>
+						<td>
+							<span class="red-elements">$("input").keydown(function(){<br>
+														&nbsp;&nbsp;&nbsp;content<br>
+													    })</span> - подобно на keypress, но работи и за клавиши като ALT, CTRL, SHIFT, ESC. 
+						</td>
+					</tr>
+					<tr>
+						<td>
+							.keyup()
+						</td>
+						<td>
+							<span class="red-elements">$("input").keyup(function(){<br>
+														&nbsp;&nbsp;&nbsp;content<br>
+													    })</span> - при освобождаване на съответен клавиш от клавиатурата, използва се заедно с keydown.
+						</td>
+					</tr>
+					<tr>
+						<th colspan="2">Form events</th>
+					</tr>
+					<tr>
+						<td>
+							.submit()
+						</td>
+						<td>
+							<span class="red-elements">$("input").submit(function(){<br>
+														&nbsp;&nbsp;&nbsp;content<br>
+													    })</span> - при изпращане на форма.
+						</td>
+					</tr>
+					<tr>
+						<td>
+							.change()
+						</td>
+						<td>
+							<span class="red-elements">$("input").change(function(){<br>
+														&nbsp;&nbsp;&nbsp;content<br>
+													    })</span> - при промяна на стоиността на input, textarea или select поле.
+						</td>
+					</tr>
+					<tr>
+						<td>
+							.focus()
+						</td>
+						<td>
+							<span class="red-elements">$("input").focus(function(){<br>
+														&nbsp;&nbsp;&nbsp;content<br>
+													    })</span> - когато фокусът на мишката е върху съответното поле.
+						</td>
+					</tr>
+					<tr>
+						<td>
+							.blur()
+						</td>
+						<td>
+							<span class="red-elements">$("input").blur(function(){<br>
+														&nbsp;&nbsp;&nbsp;content<br>
+													    })</span> - когато фокусът на мишката бъде преместен от съответното поле, използва се често заедно с focus.
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div id="jquery-effects">
+				<h2 class="sub-heading">Ефекти в jQuery</h2>
+				<table class="example-table" border="1">
+					<tr>
+						<th>Ефект</th>
+						<th>Пример</th>
+					</tr>
+					<tr>
+						<td>
+							.hide()
+						</td>
+						<td>
+							<span class="red-elements">$("#img").hide(<i>speed,easing,callback</i>)</span> - скрива елемент, параметрите на функцията не са задължителни.Speed &isin; [milliseconds,fast,slow], задава скорост на hide ефекта, easing &isin; [linear, swing], показва с каква скорост да се движи елемента
+							в различни моменти от изпълнението, при swing ефектът се движи по-бавно в началото и края и по-бързо в средата,при linear се движи монотонно, callback оказва каква функция да се изпълни след изпълнението на hide.
+						</td>
+					</tr>
+					<tr>
+						<td>
+							.show()
+						</td>
+						<td>
+							<span class="red-elements">$("#img").show(<i>speed,easing,callback</i>)</span> - показва селектираните елементи, които са скрити, параметрите са същите като на hide.
+						</td>
+					</tr>
+					<tr>
+						<td>
+							.toggle()
+						</td>
+						<td>
+							<span class="red-elements">$("#img").toggle(<i>speed,easing,callback</i>)</span> - показва селектираните елементи, които са скрити и скрива елементите, които са показани.
+						</td>
+					</tr>
+					<tr>
+						<td>
+							.fadeIn()
+						</td>
+						<td>
+							<span class="red-elements">$("#img").fadeIn(<i>speed,easing,callback</i>)</span> - показва елементи с fade ефект.
+						</td>
+					</tr>
+					<tr>
+						<td>
+							.fadeOut()
+						</td>
+						<td>
+							<span class="red-elements">$("#img").fadeOut(<i>speed,easing,callback</i>)</span> - скрива елементи с fade ефект.
+						</td>
+					</tr>
+					<tr>
+						<td>
+							.slideDown()
+						</td>
+						<td>
+							<span class="red-elements">$("#img").slideDown(<i>speed,easing,callback</i>)</span> - показва елементи със slide ефект.
+						</td>
+					</tr>
+					<tr>
+						<td>
+							.slideUp()
+						</td>
+						<td>
+							<span class="red-elements">$("#img").slideUp(<i>speed,easing,callback</i>)</span> - скрива елементи със slide ефект.
+						</td>
+					</tr>
+				</table>
+				<img src="img\jquery-effects.png" style="float:left">
+				<p class="text">
+					Както се вижда на графиката, има още много ефекти, които няма да разглеждам сега, но повече информация за тях, може да бъде намерена <a href="https://www.w3schools.com/jquery/jquery_animate.asp">тук</a>.
+				</p>
+			</div>
+			<div style="clear:both"></div>
+			<div id="ajax" style="float:none">
+				<h2 class="sub-heading">Малко за AJAX</h2>
+				<img src="img\ajax.jpg" style="float:right;margin:-20px 0 0 20px;" height="200px">
+				<p class="text" >
+					AJAX е начин за обмяна на данни със сървър и актуализиране на части от уеб страница, без да се презарежда цялата страница.
+					Така количеството информацията, която се обменя между клиент и сървър се намалява. Причината, поради която не се презарежда наново цялата страница е именно асинхронността. Чрез AJAX имаме възможност да увеличим интерактивността, функционалността и скоростта на страниците.
+				</p>
+			</div>
+			<div style="clear:both"></div>
+			<div id="ending">
+				<h2 class="sub-heading">Заключение</h2>
+				<p>
+					Както видяхме смисълът на jQuery е да улесни и опрости писането на JavaScript код. jQuery също така опростява много от сложните неща от JavaScript, като AJAX и DOM манипулации. Зареждането на библиотеката не е трудно и не изисква инсталация. За повече информация относно библиотеката и нейната функционалност, кликнете <a href="https://jquery.com/"> тук </a>. 
+				</p>
+			</div>
+			<div id="sources">
+				<h2 class="sub-heading">Източници</h2>
+				<div>
+					[1] <a href="https://api.jquery.com/">https://api.jquery.com/</a><br>
+					[2] <a href="https://www.w3schools.com/jquery/">https://www.w3schools.com/jquery/</a><br>
+					[3]	<a href="https://www.edureka.co/blog/jquery-tutorial/#four">https://www.edureka.co/blog/jquery-tutorial/#four</a><br>
+					[4] <a href="https://www.millenworld.de/mig/web/jquery-tutorial/jQuery-Referat.pdf">https://www.millenworld.de/mig/web/jquery-tutorial/jQuery-Referat.pdf</a><br>
+					[5] <a href="https://www.w3schools.com/jquery/jquery_ref_selectors.asp">https://www.w3schools.com/jquery/jquery_ref_selectors.asp</a><br>
+					[6] <a href="https://www.w3schools.com/jquery/jquery_ref_events.asp">https://www.w3schools.com/jquery/jquery_ref_events.asp</a><br>
+					[8] <a href="https://www.w3schools.com/jquery/jquery_hide_show.asp">https://www.w3schools.com/jquery/jquery_hide_show.asp</a><br>
+					[9] <a href="https://www.w3schools.com/jquery/jquery_ref_ajax.asp">https://www.w3schools.com/jquery/jquery_ref_ajax.asp</a>
+				</div>
+			</div>
+		</div><br>
+		<script>
+			window.onscroll = function() {myFunction()};
+
+			var header = document.getElementById("header");
+			var sticky = header.offsetTop;
+
+			function myFunction() {
+			  if (window.pageYOffset > sticky) {
+				header.classList.add("sticky");
+			  } else {
+				header.classList.remove("sticky");
+			  }
+			}
+		</script>
+	</body>
+</html>

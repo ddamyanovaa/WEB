@@ -1,0 +1,96 @@
+body{
+	font-size: 20px;
+	margin:0;
+}
+
+#header{
+	background: rgba(121,207,242,0.9);
+	padding:5px;
+}
+#header ul{
+	list-style-type: none;
+	text-align: center;
+}
+#header ul li{
+	display: inline-block;
+	padding:20px;
+}
+#header a{
+	text-decoration:none;
+	color:black;
+}
+#header a:hover{
+	color:white;
+}
+#heading{
+	text-align: center;
+}
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.sticky + .content {
+  padding-top: 102px;
+}
+.img1{
+	width: 300px;
+	height: 200px;
+	float:left;
+	margin-right:20px;
+}
+.main{
+	margin:0 70px;
+}
+.sub-heading{
+	color:rgb(121,207,242);
+	padding-left:50px;
+	font-weight:bolder;
+}
+.text{
+	line-height:30px;
+	text-align:justify;
+}
+.img2{
+	margin:0 30%;
+	width:400px;
+}
+#features .list-features li{
+	padding-bottom: 15px;
+	list-style-type:
+}
+.list-features{
+  list-style: none;
+}
+
+.list-features li:before {
+  content: '✓';
+  padding: 10px;
+  font-weight: bold;
+}
+#example-syntax{
+	margin-top:-15px;
+	margin-bottom:3px;
+}
+#example-syntax li{
+	list-style-type:none;
+}
+.red-elements{
+	color:red;
+}
+.example-table td, .example-table th{
+	padding:10px;
+}
+.example-table th{
+	background: #ddd;
+}
+.example-table{
+	margin:10px 0;
+}
+#first-steps:target, #features:target, #basic-methods:target, #jquery-events:target, #jquery-effects:target, #ajax:target{
+	padding-top:200px;
+}
+#beginning:target{
+	padding-top:200px;
+}
